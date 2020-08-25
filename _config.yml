@@ -1,5 +1,3 @@
 theme: jekyll-theme-slate
 title: COVID 19 Research
-description: Medical professional and there by society is still learning about the symptoms and complications during and post covid19 infection. Users are utilizing social media platforms to share their experiences with other covid19 patients to get support as well as assess what to expect in this scenario when there are multiple things that we are still not aware of about this deadly pandemic. My research is focusing on utilizing NLP to parse the content shared online to identify different symptoms and related post infection complications. This is highly valuable to not only medical professionals to be aware of an unknown symptom but also the society to learn what to look for when they are experiencing any health-related issues. Special significance is when individuals have preexisting conditions and how they are coping is also highly valuable. 
-
-
+description: COVID Research Description
