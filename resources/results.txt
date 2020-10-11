@@ -1,0 +1,72 @@
+Subreddit: COVID19Positive
+
+LDA topics=10; 10 keywords
+(0, '0.054*"smell" + 0.042*"throat" + 0.042*"taste" + 0.027*"sore" + 0.023*"loss" + 0.021*"lost" + 0.021*"sense" + 0.015*"hey" + 0.014*"water" + 0.012*"day"')
+(1, '0.045*"thank" + 0.044*"hope" + 0.036*"better" + 0.036*"sorry" + 0.034*"im" + 0.032*"thanks" + 0.020*"hear" + 0.020*"well" + 0.019*"soon" + 0.019*"glad"')
+(2, '0.020*"like" + 0.018*"pain" + 0.017*"chest" + 0.015*"also" + 0.011*"taking" + 0.011*"body" + 0.011*"get" + 0.010*"take" + 0.010*"breathing" + 0.009*"heart"')
+(3, '0.025*"know" + 0.022*"like" + 0.019*"get" + 0.018*"would" + 0.017*"dont" + 0.015*"think" + 0.014*"good" + 0.012*"going" + 0.011*"really" + 0.011*"want"')
+(4, '0.020*"people" + 0.019*"mask" + 0.018*"great" + 0.016*"old" + 0.013*"health" + 0.012*"masks" + 0.011*"risk" + 0.011*"wow" + 0.010*"care" + 0.010*"us"')
+(5, '0.041*"symptoms" + 0.030*"day" + 0.029*"days" + 0.022*"weeks" + 0.020*"week" + 0.016*"still" + 0.015*"im" + 0.014*"fever" + 0.013*"back" + 0.013*"last"')
+(6, '0.044*"people" + 0.030*"covid" + 0.028*"virus" + 0.015*"many" + 0.015*"symptoms" + 0.012*"read" + 0.012*"long" + 0.010*"think" + 0.009*"post" + 0.009*"viral"')
+(7, '0.053*"https" + 0.040*"com" + 0.037*"amp" + 0.033*"www" + 0.022*"covid" + 0.022*"reddit" + 0.018*"coronavirus" + 0.014*"message" + 0.013*"comments" + 0.011*"study"')
+(8, '0.035*"go" + 0.028*"home" + 0.026*"doctor" + 0.024*"work" + 0.023*"hospital" + 0.016*"breath" + 0.015*"er" + 0.014*"shortness" + 0.014*"low" + 0.014*"said"')
+(9, '0.063*"tested" + 0.055*"positive" + 0.052*"test" + 0.030*"got" + 0.030*"negative" + 0.030*"get" + 0.019*"covid" + 0.018*"symptoms" + 0.016*"results" + 0.016*"tests"')
+
+Top-50 trigrams -- We have to clean this up. 
+hope_feel_better
+https_np_reddit
+np_reddit_com
+reddit_com_r
+feel_better_soon
+low_grade_fever
+came_back_negative
+reddit_com_message
+com_message_compose
+lost_sense_smell
+https_www_reddit
+www_reddit_com
+sense_smell_taste
+message_compose_remindmebot
+compose_remindmebot_amp
+remindmebot_amp_subject
+loss_smell_taste
+com_r_covid19positive
+sense_taste_smell
+r_covid19positive_comments
+loss_taste_smell
+test_came_back
+go_get_tested
+lost_taste_smell
+hope_get_better
+sars_cov_2
+im_sorry_hear
+chest_x_ray
+get_better_soon
+get_antibody_test
+get_well_soon
+tested_positive_covid
+go_back_work
+keep_us_updated
+post_nasal_drip
+youtube_com_watch
+com_watch_v
+came_back_positive
+nlm_nih_gov
+ncbi_nlm_nih
+lost_sense_taste
+post_viral_fatigue
+hope_feeling_better
+two_weeks_ago
+utm_source_share
+2_weeks_ago
+link_https_np
+amp_subject_reminder
+subject_reminder_amp
+reminder_amp_message
+
+Sentiments: 
+
+Total posts: 16323
+Positive: 39391
+Neutral: 112521
+Negative: 23068
