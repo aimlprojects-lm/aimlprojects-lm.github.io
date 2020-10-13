@@ -19,3 +19,13 @@ function myFunction() {
     }
 
   }
+
+function DisplayText(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        document.getElementById('contents').innerHTML  = this.responseText;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+}
+DisplayText('./resources/output_topics.txt');
