@@ -5,7 +5,7 @@ layout: default
 <style>
 
 .link line {
-    stroke: #999;
+    stroke: #000;
     stroke-opacity: 0.6;
   }
   
@@ -44,10 +44,10 @@ layout: default
 	
 
 	<h2>D3 Interactive Tree</h2>
-	<svg width="960" height="600"></svg>
+	<svg width="1024" height="600"></svg>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="d3-ellipse-force.js"></script>
-	<script src="./resources/graph.js"></script>
+	<script src="./resources/d3graph_input.js"></script>
 	<script>
 	
 	var svg = d3.select("svg"),
@@ -60,12 +60,12 @@ layout: default
 	for (var i=0; i<graph.nodes.length; i++) {
 		nd = graph.nodes[i];
 		nd.rx = nd.id.length * 4.5; 
-		nd.ry = 12;
+		nd.ry = 10;
 	} 
 	
 	var simulation = d3.forceSimulation()
 		.force("link", d3.forceLink().id(function(d) { return d.id; }))
-		.force("collide", d3.ellipseForce(6, 0.5, 5))
+		.force("collide", d3.ellipseForce(0, 0,0))
 		.force("center", d3.forceCenter(width / 2, height / 2));
 	
 	var link = svg.append("g")
@@ -123,7 +123,7 @@ layout: default
 	}
 	
 	function dragstarted(d) {
-		if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+		if (!d3.event.active) simulation.alphaTarget(0.04).restart();
 		d.fx = d.x;
 		d.fy = d.y;
 	}

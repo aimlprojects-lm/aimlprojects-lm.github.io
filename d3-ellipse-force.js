@@ -59,8 +59,8 @@ var ellipseForce = function (padding, innerRepulsion, outerRepulsion) {
           dist_x = my_x - other_x;
           dist_y = my_y - other_y;
           if (dist_x == 0 && dist_y == 0) {
-              node.vx += (Math.random() * 4) - 2;
-              node.vy += (Math.random() * 4) - 2;  
+              node.vx += (Math.random() * 3) - 1;
+              node.vy += (Math.random() * 3) - 1;  
               continue;            
           } else if (dist_x == 0) {
               force_ratio = (my_h / my_w + other_h / other_w) / 2;
