@@ -15,18 +15,16 @@ layout: default
   }
 	</style>
 <body>
-	<h1>Subreddit: COVID19Positive</h1>
-	<select id = "select1">
-		<option value ="1">1</option>
-		<option value ="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
+
+	<h1>D3 Interactive Tree</h1>
+	<select id = "selectD3GraphOption">
+		<option value ="anonymous">Anonymous</option>
+		<option value ="positive">Positive</option>
+		<option value="support">Support</option>
 	  </select>
 	
-	<p>Click the button to display different RPI Image!</p>
-
-	<button onclick="myFunction()">Try it</button>
-	
+	<p>Click the button to select different input of the D3graph Interactive Tree</p>
+	<button onclick="SelectD3Graph()">Submit</button>
 	<h2>Top 10 Topics</h2>
 	<p id = "contents"></p>
 
@@ -42,71 +40,87 @@ layout: default
 	</p>
 	<img  id="Sentiment" src="./resources/COVID19Positive_sentiment.png" alt="Sentiment">
 	
+	
 
-	<h2>D3 Interactive Tree</h2>
-	<svg width="1600" height="600"></svg>
+	<h2>D3 Interactive Graph</h2>
+	<h3>Anonymous Graph</h3>
+	<div id="svg1"></div>
+	<h3>Positive Graph</h3>
+	<div id="svg2"></div>
+	<h3>Support Graph</h3>
+	<div id="svg3"></div>
+	
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="d3-ellipse-force.js"></script>
-	<script src="./resources/d3graph_input.js"></script>
+	<script id = "d3graph_input" src="./resources/d3graph_input_anonymous.js"></script>
+	<script id = "d3graph_input" src="./resources/d3graph_input_positive.js"></script>
+	<script id = "d3graph_input" src="./resources/d3graph_input_support.js"></script>
 	<script>
+	draw("#svg1", graph_anonymous);
+	draw("#svg2", graph_positive);
+	draw("#svg3", graph_support);
+	function draw(selector, graph){
+		var width = 1500,
+    	height = 700;
+		
+		var svg = d3.select(selector)
+		.append("svg")
+		.attr("width", width)
+		.attr("height", height);
 	
-	var svg = d3.select("svg"),
-		width = +svg.attr("width"),
-		height = +svg.attr("height");
-	
-	var color = d3.scaleOrdinal(d3.schemeCategory20);
-	
-	var nd;
-	for (var i=0; i<graph.nodes.length; i++) {
-		nd = graph.nodes[i];
-		nd.rx = nd.id.length * 4.5; 
-		nd.ry = 10;
-	} 
-	
-	var simulation = d3.forceSimulation()
-		.force("link", d3.forceLink().id(function(d) { return d.id; }))
-		.force("collide", d3.ellipseForce(0, 0,0))
-		.force("center", d3.forceCenter(width / 2, height / 2));
-	
-	var link = svg.append("g")
-		.attr("class", "link")
-		.selectAll("line")
-		.data(graph.links)
-		.enter().append("line")
-		.attr("stroke-width", function(d) { return Math.sqrt(d.value); });
-	
-	var node = svg.append("g")
-		.attr("class", "node")
-		.selectAll("ellipse")
-		.data(graph.nodes)
-		.enter().append("ellipse")  
-		.attr("rx", function(d) { return d.rx; })
-		.attr("ry", function(d) { return d.ry; })
-		.attr("fill", function(d) { return color(d.group); })
-		.call(d3.drag()
-			.on("start", dragstarted)
-			.on("drag", dragged)
-			.on("end", dragended));
-	
-	var text = svg.append("g")
-		.attr("class", "labels")
-		.selectAll("text")
-		.data(graph.nodes)
-		.enter().append("text")  
-		.attr("dy", 2)
-		.attr("text-anchor", "middle")
-		.text(function(d) {return d.id})
-		.attr("fill", "white");
-	
-	
-	simulation
-		.nodes(graph.nodes)
-		.on("tick", ticked);
-	
-	simulation.force("link")
-		.links(graph.links);
-	
-	function ticked() {
+		var color = d3.scaleOrdinal(d3.schemeCategory20);
+		
+		var nd;
+		for (var i=0; i<graph.nodes.length; i++) {
+			nd = graph.nodes[i];
+			nd.rx = nd.id.length * 4.5; 
+			nd.ry = 10;
+		} 
+		
+		var simulation = d3.forceSimulation()
+			.force("link", d3.forceLink().id(function(d) { return d.id; }))
+			.force("collide", d3.ellipseForce(0, 0,0))
+			.force("center", d3.forceCenter(width / 2, height / 2));
+		
+		var link = svg.append("g")
+			.attr("class", "link")
+			.selectAll("line")
+			.data(graph.links)
+			.enter().append("line")
+			.attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+		
+		var node = svg.append("g")
+			.attr("class", "node")
+			.selectAll("ellipse")
+			.data(graph.nodes)
+			.enter().append("ellipse")  
+			.attr("rx", function(d) { return d.rx; })
+			.attr("ry", function(d) { return d.ry; })
+			.attr("fill", function(d) { return color(d.group); })
+			.call(d3.drag()
+				.on("start", dragstarted)
+				.on("drag", dragged)
+				.on("end", dragended));
+		
+		var text = svg.append("g")
+			.attr("class", "labels")
+			.selectAll("text")
+			.data(graph.nodes)
+			.enter().append("text")  
+			.attr("dy", 2)
+			.attr("text-anchor", "middle")
+			.text(function(d) {return d.id})
+			.attr("fill", "white");
+		
+		
+		simulation
+			.nodes(graph.nodes)
+			.on("tick", ticked);
+		
+		simulation.force("link")
+			.links(graph.links);
+
+			function ticked() {
 		link
 			.attr("x1", function(d) { return d.source.x; })
 			.attr("y1", function(d) { return d.source.y; })
@@ -122,24 +136,30 @@ layout: default
 	
 	}
 	
-	function dragstarted(d) {
-		if (!d3.event.active) simulation.alphaTarget(0.04).restart();
-		d.fx = d.x;
-		d.fy = d.y;
+		function dragstarted(d) {
+			if (!d3.event.active) simulation.alphaTarget(0.04).restart();
+			d.fx = d.x;
+			d.fy = d.y;
+		}
+		
+		function dragged(d) {
+			d.fx = d3.event.x;
+			d.fy = d3.event.y;
+		}
+		
+		function dragended(d) {
+			if (!d3.event.active) simulation.alphaTarget(0);
+			d.fx = null;
+			d.fy = null;
+		}
 	}
 	
-	function dragged(d) {
-		d.fx = d3.event.x;
-		d.fy = d3.event.y;
-	}
 	
-	function dragended(d) {
-		if (!d3.event.active) simulation.alphaTarget(0);
-		d.fx = null;
-		d.fy = null;
-	}
+	
 	
 	</script>
+
+
 	
 </body>
 

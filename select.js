@@ -1,23 +1,29 @@
-function myFunction() {
-    var x = document.getElementById("select1")
-    var y = x.options[x.selectedIndex].text;
+function SelectD3Graph() {
+    var x = document.getElementById("selectD3GraphOption")
+    var y = x.options[x.selectedIndex].value;
+    console.log(y);
 
     //document.getElementById("selectionArea").innerHTML = "Found " + y + " options in the list.";
     switch(y){
-        case '1':
-            document.getElementById("RPIImage").src = "./pics/rpi1.jpg";
+        case 'anonymous':
+            document.getElementById('d3graph_input').src = "./resources/d3graph_input_anonymous.js";
             break;
-        case '2':
-            document.getElementById("RPIImage").src = "./pics/rpi2.jpg";
+        case 'positive':
+            document.getElementById('d3graph_input').src = "./resources/d3graph_input_positive.js";
+            console.log("P");
             break;
-        case '3':
-            document.getElementById("RPIImage").src = "./pics/rpi3.jpg";
+        case 'support':
+            document.getElementById('d3graph_input').src = "./resources/d3graph_input_support.js";
+            console.log("S");
             break;
-        case '4':
-        document.getElementById("RPIImage").src = "./pics/rpi4.jpg";
-        break;
+        
     }
+    var svg = d3.select("body")
+    .selectAll("svg")
+    .data([settings.dataset]);  
+    svg.enter().append("svg");
 
+    console.log("xxxxx");
   }
 
 function DisplayText(url) {
